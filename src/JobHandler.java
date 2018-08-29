@@ -57,7 +57,7 @@ public class JobHandler {
 			warningDeRank = warningTotals * 6;
 			break;
 
-			// Add Code Here [You have to use Switch and If/Else to get graded]
+		// Add Code Here [You have to use Switch and If/Else to get graded]
 		}
 		return currentRank - warningDeRank;
 	}
@@ -72,7 +72,7 @@ public class JobHandler {
 	 * seniority of 2, the user gains a 10 rank bonus c) If the user has a
 	 * seniority of 3, the user gains a 20 rank bonus b) Otherwise there is no
 	 * bonus. 4. If the employee doesn't meet requirement 3, if the position is
-	 * temporal they can still qualify for the position.
+	 * temporal they can still qualify for the position. jobRank +=5;
 	 * 
 	 * @param job
 	 * @param person
@@ -81,11 +81,37 @@ public class JobHandler {
 	public static boolean promotionQualify(boolean availability, boolean jobType, int jobRank, int eRank,
 			int seniority) {
 		boolean qualify = false;
+
 		if (!availability) {
 			return qualify;
 		}
 		if (eRank <= 0) {
 			return qualify;
+		}
+
+		switch (seniority) {
+		case 0:
+
+			break;
+		case 1:
+			jobRank += 5;
+			break;
+
+		case 2:
+			jobRank += 10;
+
+			break;
+
+		case 3:
+			jobRank += 15;
+			break;
+
+		}
+
+		if (!jobType || eRank <= jobRank) {
+
+			qualify = true;
+
 		}
 
 		// Add Code Here [You have to use Switch and If/Else to get graded]
